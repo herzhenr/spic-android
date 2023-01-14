@@ -1,0 +1,4 @@
+/build
+./release/*.aab
+./debug/*.aab
+*.aab

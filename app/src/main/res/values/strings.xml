@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Play Integrity Checker</string>
+    <string name="app_name_short">SPIC</string>
+
+    <!-- SafetyNet Strings -->
+    <string name="sn_result_title">SafetyNet Attestation Result:</string>
+    <string name="sn_result_nonce">Nonce</string>
+    <string name="sn_result_timestamp">Timestamp</string>
+    <string name="sn_result_evaluationType">Evaluation Type</string>
+    <string name="sn_result_basicIntegrity">Basic Integrity</string>
+    <string name="sn_result_ctsProfileMatch">CTS Profile Match</string>
+    <string name="sn_result_apkPackageName">APK Package Name</string>
+    <string name="sn_result_digest">APK Digest (Sha256)</string>
+    <string name="sn_result_certificateDigest">APK Certificate Digest (Sha256)</string>
+
+    <string name="sn_HardwareBacked">Hardware Backed</string>
+    <string name="sn_Basic">Basic</string>
+    <string name="sn_passed">passed</string>
+    <string name="sn_failed">failed</string>
+    <string name="sn_unevaluated">unevaluated</string>
+
+    <string name="safetyNet_attestation_button">Make SafetyNet Attestation Request</string>
+
+
+    <!-- PlayIntegrity Strings -->
+    <string name="pi_result_title">Play Integrity Result:</string>
+
+    <string name="pi_result_requestDetails">Request Details</string>
+    <string name="pi_result_nonce">Nonce</string>
+    <string name="pi_result_requestPackageName">Request Package Name</string>
+    <string name="pi_result_timestamp">Timestamp</string>
+
+    <string name="pi_result_appIntegrity">App Integrity</string>
+    <string name="pi_result_appRecognitionVerdict">App recognition verdict</string>
+    <string name="pi_result_apkPackageName">APK Package Name</string>
+    <string name="pi_result_apkCertificateDigestSha256">APK Certificate Digest (Sha256)</string>
+    <string name="pi_result_versionCode">Version Code</string>
+
+    <string name="pi_result_deviceIntegrity">Device Integrity</string>
+    <string name="pi_result_deviceRecognitionVerdict">Device recognition verdict</string>
+
+    <string name="pi_result_accountDetails">Account Details</string>
+    <string name="pi_result_appLicensingVerdict">App licensing verdict</string>
+
+    <string name="playIntegrity_button">Make Play Integrity Request</string>
+
+    <string name="deviceRecognition_help_NO_INTEGRITY">The device has signs of an attack (such as API hooking) or system compromise (such as being rooted), or it is not a physical device (such as an emulator that does not pass Google Play integrity checks).</string>
+    <string name="deviceRecognition_help_MEETS_BASIC_INTEGRITY">The device passes basic system integrity checks. It may not meet Android compatibility requirements and may not be approved to run Google Play services (eg. device is running unrecognized version of Android, may have an unlocked bootloader, or may not have been certified by the manufacturer).</string>
+    <string name="deviceRecognition_help_MEETS_DEVICE_INTEGRITY">The Android device is powered by Google Play services. It passes system integrity checks and meets Android compatibility requirements.</string>
+    <string name="deviceRecognition_help_MEETS_STRONG_INTEGRITY">The Android device is powered by Google Play services and has a strong guarantee of system integrity such as a hardware-backed proof of boot integrity. It passes system integrity checks and meets Android compatibility requirements.</string>
+    <string name="deviceRecognition_help_MEETS_VIRTUAL_INTEGRITY">The app is running on an Android emulator powered by Google Play services. The emulator passes system integrity checks and meets core Android compatibility requirements.</string>
+
+
+    <!-- SafetyNet and PlayIntegrity Strings -->
+    <string name="result_rawJsonResult">Raw JSON</string>
+    <string name="result_exportJson">Export JSON</string>
+    <string name="result_loading">loading</string>
+    <string name="dialog_title">Raw JSON result</string>
+    <string name="result_UnknownError">unknown error occurred</string>
+
+    <string name="requestSettings_title">Request Settings</string>
+    <string name="requestSettings_nonceCreation">Nonce Creation</string>
+    <string name="requestSettings_checkVerdict">Check Verdict</string>
+    <string name="requestSettings_local">local</string>
+    <string name="requestSettings_server">server</string>
+    <string name="requestSettings_google">google</string>
+
+    <string name="requestSettings_nonceCreation_helpText">Determines if the nonce is created on the device locally or on the secure remote server. (Locally generated nonce are only for testing purposes and not recommended in production use). The usage of a nonce prevents replay attacks.</string>
+    <string name="requestSettings_checkVerdict_helpText">Determines if the integrity verdict should be checked locally on the device or on a secure remote server. (Checking the verdict locally is only for testing purposes as it makes bypassing the check trivial).</string>
+
+    <string name="result_verdictStrength">Verdict Strength:</string>
+
+    <!-- Settings Strings -->
+    <string name="info_device">Device Info</string>
+    <string name="info_model">Model</string>
+    <string name="info_androidVersion">Android Version</string>
+    <string name="info_securityPatch">Security Patch</string>
+    <string name="info_playServicesVersion">Play Services Version</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">system</string>
+    <string name="settings_theme_light">light</string>
+    <string name="settings_theme_dark">dark</string>
+    <string name="settings_url">Server URL</string>
+    <string name="settings_url_hint">custom server url</string>
+
+
+    <!-- About Strings -->
+    <string name="about_this_app">This app is an open source implementation of the Google Play Integrity API as well as the Safety Net Attestation API (API info see below). The unique nonce creation as well as the checks of the verdict returned by both APIs can be performed locally on the device or on a remote server using the server implementation.</string>
+
+    <string name="about_api">API Info</string>
+    <string name="about_api_playIntegrityButton">Play Integrity</string>
+    <string name="about_api_playIntegrityLink">https://developer.android.com/google/play/integrity</string>
+    <string name="about_api_safetyNetButton">SafetyNet</string>
+    <string name="about_api_safetyNetLink">https://developer.android.com/training/safetynet/attestation</string>
+
+    <string name="about_sourceCode">Source Code</string>
+    <string name="about_sourceCode_appButton">Android App</string>
+    <string name="about_sourceCode_appLink">https://github.com/herzhenr/spic-android</string>
+    <string name="about_sourceCode_serverButton">Check Server</string>
+    <string name="about_sourceCode_serverLink">https://github.com/herzhenr/spic-server</string>
+
+    <string name="about_licenseAndPrivacy">License and privacy policy</string>
+    <string name="about_licenseButton">License</string>
+    <string name="about_licenseLink">TODO</string>
+    <string name="about_privacyButton">Privacy</string>
+    <string name="about_privacyLink">https://github.com/herzhenr/spic-android/blob/main/privacyPolicy.md</string>
+
+    <!-- BottomNavigationBar -->
+    <string name="bottomBar_playIntegrity">Play Integ.</string>
+    <string name="bottomBar_safetyNet">SafetyNet</string>
+    <string name="bottomBar_settings">Settings</string>
+    <string name="bottomBar_about">About</string>
+</resources>
