@@ -91,21 +91,20 @@
 
     <string name="about_api">API Info</string>
     <string name="about_api_playIntegrityButton">Play Integrity</string>
-    <string name="about_api_playIntegrityLink">https://developer.android.com/google/play/integrity</string>
+    <string name="about_api_playIntegrityLink" translatable="false">https://developer.android.com/google/play/integrity</string>
     <string name="about_api_safetyNetButton">SafetyNet</string>
-    <string name="about_api_safetyNetLink">https://developer.android.com/training/safetynet/attestation</string>
+    <string name="about_api_safetyNetLink" translatable="false">https://developer.android.com/training/safetynet/attestation</string>
 
     <string name="about_sourceCode">Source Code</string>
     <string name="about_sourceCode_appButton">Android App</string>
-    <string name="about_sourceCode_appLink">https://github.com/herzhenr/spic-android</string>
+    <string name="about_sourceCode_appLink" translatable="false">https://github.com/herzhenr/spic-android</string>
     <string name="about_sourceCode_serverButton">Check Server</string>
-    <string name="about_sourceCode_serverLink">https://github.com/herzhenr/spic-server</string>
+    <string name="about_sourceCode_serverLink" translatable="false">https://github.com/herzhenr/spic-server</string>
 
     <string name="about_licenseAndPrivacy">License and privacy policy</string>
-    <string name="about_licenseButton">License</string>
-    <string name="about_licenseLink">TODO</string>
+    <string name="about_licenseButton">Licenses</string>
     <string name="about_privacyButton">Privacy</string>
-    <string name="about_privacyLink">https://github.com/herzhenr/spic-android/blob/main/privacyPolicy.md</string>
+    <string name="about_privacyLink" translatable="false">https://github.com/herzhenr/spic-android/blob/main/privacyPolicy.md</string>
 
     <!-- BottomNavigationBar -->
     <string name="bottomBar_playIntegrity">Play Integ.</string>

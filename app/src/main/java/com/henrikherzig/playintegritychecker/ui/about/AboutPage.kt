@@ -3,25 +3,25 @@ package com.henrikherzig.playintegritychecker.ui.about
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material.icons.outlined.OpenInNew
+import androidx.compose.material.icons.outlined.ReadMore
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.henrikherzig.playintegritychecker.R
-import androidx.compose.material.icons.outlined.ReadMore
-import com.henrikherzig.playintegritychecker.ui.CustomButton
-import com.henrikherzig.playintegritychecker.ui.CustomCard
-import com.henrikherzig.playintegritychecker.ui.CustomCardTitle
-import com.henrikherzig.playintegritychecker.ui.openLink
+import com.henrikherzig.playintegritychecker.ui.*
 
 @Composable
-fun AboutPage(playServiceVersion: String?) {
+fun AboutPage(navController: NavHostController) {
     val context = LocalContext.current
     Box(
         modifier = Modifier
@@ -86,11 +86,10 @@ fun AboutPage(playServiceVersion: String?) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
-                //.padding(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 /* workaround: .weight is not accessible in button directly and also not if box
-                   is extracted to other method, have to investigate this */
+                   is extracted to other method */
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -131,26 +130,35 @@ fun AboutPage(playServiceVersion: String?) {
                         .fillMaxWidth()
                         .weight(1f)
                 ) {
-                    /* Source Code Link */
+                    /* License */
+                    val openedRecognition = remember { mutableStateOf(false) }
                     CustomButton(
-                        {  },
+                        { openedRecognition.value = true },
                         Icons.Outlined.ReadMore,
                         stringResource(id = R.string.about_licenseButton)
                     )
+                    if (openedRecognition.value) {
+                        openedRecognition.value=false
+                        navController.navigate("licence") {
+
+                        }
+                    }
                 }
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1f)
                 ) {
-                    /* Play Integrity API Link */
+                    /* Privacy */
+                    val link = stringResource(id = R.string.about_privacyLink)
                     CustomButton(
-                        {  },
+                        { openLink(link, context) },
                         Icons.Outlined.ReadMore,
                         stringResource(id = R.string.about_privacyButton) // policy
                     )
                 }
             }
+
         }
     }
 }

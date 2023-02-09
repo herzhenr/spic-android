@@ -2,14 +2,21 @@ package com.henrikherzig.playintegritychecker.ui.navigationbar
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -22,12 +29,14 @@ import com.henrikherzig.playintegritychecker.R
 import com.henrikherzig.playintegritychecker.attestation.PlayIntegrityStatement
 import com.henrikherzig.playintegritychecker.attestation.safetynet.SafetyNetStatement
 import com.henrikherzig.playintegritychecker.dataStore
+import com.henrikherzig.playintegritychecker.ui.CustomCardTitle
 import com.henrikherzig.playintegritychecker.ui.about.AboutPage
 import com.henrikherzig.playintegritychecker.ui.playintegrity.PlayIntegrity
 import com.henrikherzig.playintegritychecker.ui.safetynet.SafetyNet
 import com.henrikherzig.playintegritychecker.ui.ResponseType
 import com.henrikherzig.playintegritychecker.ui.settings.Settings
 import com.henrikherzig.playintegritychecker.ui.CustomViewModel
+import com.mikepenz.aboutlibraries.ui.compose.LibrariesContainer
 
 @Composable
 fun BottomNavigationBar(
@@ -47,6 +56,7 @@ fun BottomNavigationBar(
         BottomNavItem.Settings,
         BottomNavItem.About,
     )
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     // TODO: very ugly better solution in the future
     // check
@@ -87,6 +97,11 @@ fun BottomNavigationBar(
     }
     val urlValue = viewModel.stateURL.observeAsState().value
 
+    val appBarHorizontalPadding = 0.dp
+    val titleIconModifier = Modifier
+        .fillMaxHeight()
+        .width(72.dp - appBarHorizontalPadding)
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -95,30 +110,64 @@ fun BottomNavigationBar(
                 * first line: short app name variant in bigger font
                 * second line: full app name variant in smaller font
                 */
+                modifier= Modifier.fillMaxWidth(),
                 title = {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.Center,
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.app_name_short),
-                            style = MaterialTheme.typography.subtitle2,
-                            fontSize = 18.sp,
-                            modifier = Modifier.align(Alignment.CenterHorizontally)
-                        )
-                        Text(
-                            text = stringResource(id = R.string.app_name),
-                            style = MaterialTheme.typography.caption,
-                            modifier = Modifier.align(Alignment.CenterHorizontally)
-                        )
+                    // TopAppBar Content
+                    Box(Modifier.height(40.dp)) {
+
+                        // Navigation Icon
+                        if (navBackStackEntry?.destination?.route == "licence") {
+                            Row(titleIconModifier, verticalAlignment = Alignment.CenterVertically) {
+                                IconButton(
+                                    onClick = { navController.navigateUp() },
+                                    enabled = true,
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Filled.ArrowBack,
+                                        contentDescription = "Back",
+                                    )
+                                }
+                            }
+                        }
+
+                        // Title
+                        Row(Modifier.fillMaxSize(),
+                            verticalAlignment = Alignment.CenterVertically) {
+                            Column(
+                                modifier = Modifier.fillMaxSize(),
+                                verticalArrangement = Arrangement.Center,
+                            ) {
+                                Text(
+                                    text = stringResource(id = R.string.app_name_short),
+                                    style = MaterialTheme.typography.subtitle2,
+                                    fontSize = 18.sp,
+                                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                                )
+                                Text(
+                                    text = stringResource(id = R.string.app_name),
+                                    style = MaterialTheme.typography.caption,
+                                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                                )
+
+                            }
+
+                        }
+
+                        // Actions
+                        /* CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+                            Row(
+                                Modifier.fillMaxHeight(),
+                                horizontalArrangement = Arrangement.End,
+                                verticalAlignment = Alignment.CenterVertically,
+                            ){}
+                        } */
                     }
                 },
-                modifier = Modifier.fillMaxWidth()
             )
         },
         bottomBar = {
             BottomNavigation {
-                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                // val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
                 appPages.forEach { screen ->
                     BottomNavigationItem(
@@ -134,7 +183,7 @@ fun BottomNavigationBar(
                                 // Avoid multiple versions of same page
                                 launchSingleTop = true
                                 // Restore state when selecting a previous page again
-                                restoreState = true
+                                // restoreState = true
                             }
                         }
                     )
@@ -188,7 +237,17 @@ fun BottomNavigationBar(
                 Settings(playServiceVersion)
             }
             composable(BottomNavItem.About.screen_route) {
-                AboutPage(playServiceVersion)
+                AboutPage(navController)
+            }
+            composable("licence") {
+                // Licenses Page
+                Column(
+                    modifier = Modifier
+                        .padding(all = 12.dp)
+                ) {
+                    CustomCardTitle(stringResource(id = R.string.about_licenseButton))
+                    LibrariesContainer()
+                }
             }
         }
     }
