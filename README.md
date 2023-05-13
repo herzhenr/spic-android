@@ -1,6 +1,14 @@
 <img src="docs/icon.png" width="96" align="right" />
 
 # SPIC - Simple Play Integrity Checker
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg"></a>
+  <a href="https://kotlinlang.org"><img src="https://img.shields.io/badge/Kotlin-%237F52FF.svg?&logo=kotlin&logoColor=white"></a>
+  <a href="https://www.android.com"><img src="https://img.shields.io/badge/Android-3DDC84?&logo=android&logoColor=white"></a>
+  <a href="https://play.google.com/store/apps/details?id=com.henrikherzig.playintegritychecker"><img src="https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white"></a>
+  <a href="https://github.com/herzhenr/spic-android/releases"><img src="https://img.shields.io/github/release/herzhenr/spic-android.svg?logo=github&color=blue"></a>
+</p>
+
 SPIC (short for **S**imple **P**lay **I**ntegrity **C**hecker) is a simple Android App that demonstrates the usage of the [PlayIntegrity API](https://developer.android.com/google/play/integrity) as well as the deprecated [SafetyNet Attestation API](https://developer.android.com/training/safetynet/attestation).
 
 [<img src="docs/googlePlay.png"
