@@ -15,13 +15,13 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.safetynet.SafetyNet
 import com.henrikherzig.playintegritychecker.BuildConfig
 import com.henrikherzig.playintegritychecker.attestation.AttestationException
+import com.henrikherzig.playintegritychecker.attestation.RateLimiterSafetyNet
 import com.henrikherzig.playintegritychecker.attestation.getApiCall
 import com.henrikherzig.playintegritychecker.ui.ResponseType
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import java.time.Instant
 import java.util.*
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -47,6 +47,12 @@ class AttestationCallSafetyNet : ViewModel() {
         }) {
             // Set UI to loading screen
             safetyNetResult.value = ResponseType.Loading
+
+            // rate limiting
+            RateLimiterSafetyNet(context).shouldRequestBeMade()?.let {
+                safetyNetResult.value = it
+                return@launch
+            }
 
             // Receive the nonce from the secure server.
             val nonce: String = try {

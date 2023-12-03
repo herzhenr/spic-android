@@ -18,6 +18,7 @@ import com.google.gson.Gson
 import com.henrikherzig.playintegritychecker.BuildConfig
 import com.henrikherzig.playintegritychecker.attestation.AttestationException
 import com.henrikherzig.playintegritychecker.attestation.PlayIntegrityStatement
+import com.henrikherzig.playintegritychecker.attestation.RateLimiterPlayIntegrity
 import com.henrikherzig.playintegritychecker.attestation.getApiCall
 import com.henrikherzig.playintegritychecker.ui.ResponseType
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -31,7 +32,6 @@ import org.json.JSONObject
 import java.security.KeyFactory
 import java.security.PublicKey
 import java.security.spec.X509EncodedKeySpec
-import java.util.Base64.getEncoder
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import javax.crypto.SecretKey
@@ -51,6 +51,12 @@ class AttestationCallPlayIntegrity : ViewModel() {
     ) = viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, _ -> }) {
         // set UI to loading (api calls etc. take some time...)
         playIntegrityResult.value = ResponseType.Loading
+
+        // rate limiting
+        RateLimiterPlayIntegrity(context).shouldRequestBeMade()?.let {
+            playIntegrityResult.value = it
+            return@launch
+        }
 
         // Generate nonce
         val nonce: String = try {
