@@ -9,6 +9,7 @@ sealed class ResponseType<out R> {
     //class SuccessGeneric<R>(val value: R) : ResponseType<R>()
     class SuccessSimple(val value: String) : ResponseType<Nothing>()
     class Failure(val error: Throwable) : ResponseType<Nothing>()
+    class RateLimiting(val error: Throwable) : ResponseType<Nothing>()
     object Loading : ResponseType<Nothing>()
     object None : ResponseType<Nothing>()
 }

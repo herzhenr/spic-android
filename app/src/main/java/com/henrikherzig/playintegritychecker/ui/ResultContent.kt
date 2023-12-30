@@ -52,6 +52,44 @@ fun ResultContent(state: State<ResponseType<Statement>>, onClose: () -> Unit) {
             //ResultOf.Initial -> return@MainCardColumn
             is ResponseType.None -> return
             is ResponseType.SuccessSimple -> Success(result.value)
+            is ResponseType.RateLimiting -> RateLimiting(result.error)
+        }
+    }
+}
+
+/**
+ * Shows a simple text with an question mark button which opens a popup explaining why the rate limiting is necessary
+ * @param text error to show.
+ **/
+@Composable
+fun RateLimiting(e: Throwable) {
+    val text = e.message ?: stringResource(R.string.result_UnknownError)
+    val opened = remember { mutableStateOf(false) }
+    Row(verticalAlignment = Alignment.CenterVertically/*, modifier = Modifier.padding(12.dp)*/) {
+        Icon(
+            Icons.Outlined.Error,
+            contentDescription = null,
+            modifier = Modifier.size(ButtonDefaults.IconSize)
+        )
+        Spacer(Modifier.size(10.dp))
+        //e.message?.let { Text(text = it) }
+        // multiline text but not more than width of screen
+        Text(
+            text = text,
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+        )
+        CustomHelpButton(onClick = { opened.value = true })
+        if (opened.value) {
+            CustomContentAlertDialog(
+                // modifier = Modifier.height(350.dp),
+                titleString = "Test title",
+                content = {
+                    Text("Test content")
+                },
+                opened = opened,
+            )
         }
     }
 }
