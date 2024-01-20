@@ -272,6 +272,21 @@ fun PlayIntegrityResult(attest: PlayIntegrityStatement) {
         }
     }
 
+    /* ENVIRONMENT DETAILS */
+    val playProtectVerdict = attest.environmentDetails?.playProtectVerdict
+    if (playProtectVerdict != null) {
+        CustomCardTitle2(stringResource(R.string.pi_result_environmentDetails))
+        var passed: Boolean? = null
+        if (playProtectVerdict != "UNEVALUATED") passed = playProtectVerdict == "NO_ISSUES"
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 6.dp)
+        ) {
+            CustomCardTitle3(text = stringResource(R.string.pi_result_playProtectVerdict))
+            CustomCardBoolHorizontal(playProtectVerdict, passed)
+        }
+    }
+
     fun String.decode(): String {
         return Base64.decode(this, Base64.DEFAULT).toString(charset("UTF-8"))
     }

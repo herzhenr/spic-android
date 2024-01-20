@@ -29,6 +29,12 @@ class PlayIntegrityStatement : Statement {
      */
     @Key
     val accountDetails: AccountDetails? = null
+
+    /**
+     * Details about the environment
+     */
+    @Key
+    val environmentDetails: EnvironmentDetails? = null
 }
 
 class RequestDetails {
@@ -112,4 +118,13 @@ class AccountDetails {
      */
     @Key
     val appLicensingVerdict: String? = null
+}
+
+class EnvironmentDetails {
+    /**
+     * The environmentDetails field contains a single value, playProtectVerdict, that provides
+     * information about Google Play Protect on the device.
+     */
+    @Key
+    val playProtectVerdict: String? = null
 }

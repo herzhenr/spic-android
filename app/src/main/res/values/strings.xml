@@ -44,6 +44,9 @@
     <string name="pi_result_accountDetails">Account Details</string>
     <string name="pi_result_appLicensingVerdict">App licensing verdict</string>
 
+    <string name="pi_result_environmentDetails">Environment Details</string>
+    <string name="pi_result_playProtectVerdict">Play Protect Verdict</string>
+
     <string name="playIntegrity_button">Make Play Integrity Request</string>
 
     <string name="deviceRecognition_help_NO_INTEGRITY">The device has signs of an attack (such as API hooking) or system compromise (such as being rooted), or it is not a physical device (such as an emulator that does not pass Google Play integrity checks).</string>
