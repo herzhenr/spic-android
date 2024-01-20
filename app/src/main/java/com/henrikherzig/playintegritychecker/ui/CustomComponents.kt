@@ -2,15 +2,12 @@ package com.henrikherzig.playintegritychecker.ui
 
 import android.content.Context
 import android.net.Uri
-import android.os.Build
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Circle
@@ -25,11 +22,9 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.zIndex
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -168,9 +163,14 @@ data class HorizontalPagerContent(
     val text: String,
 )
 
+data class HorizontalPagerContentText(
+    val title: String,
+    val description: String
+)
+
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun CustomSlideStack(initialPage: Int) {
+fun CustomSlideStackDeviceRecognitionVerdict(initialPage: Int) {
 
     @Composable
     fun createItems() = listOf(
@@ -209,6 +209,59 @@ fun CustomSlideStack(initialPage: Int) {
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(text = item.text)
                 //Spacer(modifier = Modifier.weight(1f))
+            }
+        }
+        PageIndicator(
+            numberOfPages = items.size,
+            selectedPage = pagerState.currentPage,
+            defaultRadius = 20.dp,
+            selectedLength = 40.dp,
+            space = 10.dp,
+            animationDurationInMillis = 500,
+        )
+    }
+}
+
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun CustomSlideStackRecentDeviceActivity(initialPage: Int) {
+
+    @Composable
+    fun createItems() = listOf(
+        HorizontalPagerContentText(
+            title = "LEVEL_1",
+            description = stringResource(id = R.string.recentDeviceActivity_help_LEVEL_1)
+        ),
+        HorizontalPagerContentText(
+            title = "LEVEL_2",
+            description = stringResource(id = R.string.recentDeviceActivity_help_LEVEL_2)
+        ),
+        HorizontalPagerContentText(
+            title = "LEVEL_3",
+            description = stringResource(id = R.string.recentDeviceActivity_help_LEVEL_3)
+        ),
+        HorizontalPagerContentText(
+            title = "LEVEL_4",
+            description = stringResource(id = R.string.recentDeviceActivity_help_LEVEL_4)
+        ),
+        HorizontalPagerContentText(
+            title = "UNEVALUATED",
+            description = stringResource(id = R.string.recentDeviceActivity_help_UNEVALUATED)
+        ),
+    )
+
+    val items = createItems()
+
+    val pagerState = rememberPagerState(initialPage)
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        HorizontalPager(count = items.size, state = pagerState) { page ->
+            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+                .fillMaxHeight()
+                .padding(top = 60.dp, bottom = 30.dp)) {
+                val item = items[currentPage]
+                CustomCardTitle2(item.title)
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(text = item.description)
             }
         }
         PageIndicator(

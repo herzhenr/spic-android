@@ -19,7 +19,6 @@ import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.henrikherzig.playintegritychecker.attestation.PlayIntegrityStatement
 import com.henrikherzig.playintegritychecker.attestation.safetynet.SafetyNetStatement
@@ -134,6 +133,7 @@ fun PlayIntegrityResult(attest: PlayIntegrityStatement) {
 
     /* DEVICE INTEGRITY */
     val openedRecognition = remember { mutableStateOf(false) }
+    val openedRecentDeviceActivity = remember { mutableStateOf(false) }
     val recognitionVerdict = attest.deviceIntegrity?.deviceRecognitionVerdict
     var state = 0
     var text = "NO_INTEGRITY"
@@ -152,29 +152,72 @@ fun PlayIntegrityResult(attest: PlayIntegrityStatement) {
             text = "MEETS_VIRTUAL_INTEGRITY"
         }
     }
+    val deviceActivityLevel = attest.deviceIntegrity?.recentDeviceActivity?.deviceActivityLevel
+    val deviceActivityLevelInt = Regex("LEVEL_(\\d+)").find(deviceActivityLevel.orEmpty())?.groupValues?.get(1)?.toIntOrNull() ?: 0
     CustomCardTitle2(stringResource(R.string.pi_result_deviceIntegrity))
-    Row(
+    Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 6.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 6.dp)
     ) {
-        Column {
-            CustomCardTitle3(text = stringResource(R.string.pi_result_deviceRecognitionVerdict))
-            CustomThreeStateIcons(state, text)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 6.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column {
+                CustomCardTitle3(text = stringResource(R.string.pi_result_deviceRecognitionVerdict))
+                CustomThreeStateIcons(state, text)
+            }
+            Spacer(modifier = Modifier.weight(1.0f))
+            CustomHelpButton(onClick = { openedRecognition.value = true })
+            if (openedRecognition.value) {
+                CustomContentAlertDialog(
+                    modifier = Modifier.height(350.dp),
+                    titleString = stringResource(R.string.pi_result_deviceRecognitionVerdict),
+                    content = {
+                        //deviceIntegrityAlertContent()
+                        CustomSlideStackDeviceRecognitionVerdict(if (text == "MEETS_VIRTUAL_INTEGRITY") 4 else state)
+                    },
+                    opened = openedRecognition,
+                )
+            }
         }
-        Spacer(modifier = Modifier.weight(1.0f))
-        CustomHelpButton(onClick = { openedRecognition.value = true })
-        if (openedRecognition.value) {
-            CustomContentAlertDialog(
-                modifier = Modifier.height(350.dp),
-                titleString = stringResource(R.string.pi_result_deviceRecognitionVerdict),
-                content = {
-                    //deviceIntegrityAlertContent()
-                    CustomSlideStack(if (text == "MEETS_VIRTUAL_INTEGRITY") 4 else state)
-                },
-                opened = openedRecognition,
-            )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 6.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(horizontal = 6.dp)
+            ) {
+                if (deviceActivityLevel != null) {
+                    if (deviceActivityLevel == "UNEVALUATED") {
+                        CustomCardTitle3(text = stringResource(R.string.pi_result_recentDeviceActivity))
+                        CustomCardBoolHorizontal(deviceActivityLevel, null)
+                    } else {
+                        CustomCardGroup(
+                            text1 = stringResource(R.string.pi_result_recentDeviceActivity),
+                            text2 = deviceActivityLevel
+                        )
+                    }
+
+                }
+            }
+            Spacer(modifier = Modifier.weight(1.0f))
+            CustomHelpButton(onClick = { openedRecentDeviceActivity.value = true })
+            if (openedRecentDeviceActivity.value) {
+                CustomContentAlertDialog(
+                    modifier = Modifier.height(350.dp),
+                    titleString = stringResource(R.string.pi_result_recentDeviceActivity),
+                    content = {
+                        CustomSlideStackRecentDeviceActivity(if (deviceActivityLevel == "UNEVALUATED") 4 else deviceActivityLevelInt - 1)
+                    },
+                    opened = openedRecentDeviceActivity,
+                )
+            }
         }
     }
 
@@ -226,6 +269,21 @@ fun PlayIntegrityResult(attest: PlayIntegrityStatement) {
         ) {
             CustomCardTitle3(text = stringResource(R.string.pi_result_appLicensingVerdict))
             CustomCardBoolHorizontal(licensed, passed)
+        }
+    }
+
+    /* ENVIRONMENT DETAILS */
+    val playProtectVerdict = attest.environmentDetails?.playProtectVerdict
+    if (playProtectVerdict != null) {
+        CustomCardTitle2(stringResource(R.string.pi_result_environmentDetails))
+        var passed: Boolean? = null
+        if (playProtectVerdict != "UNEVALUATED") passed = playProtectVerdict == "NO_ISSUES"
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 6.dp)
+        ) {
+            CustomCardTitle3(text = stringResource(R.string.pi_result_playProtectVerdict))
+            CustomCardBoolHorizontal(playProtectVerdict, passed)
         }
     }
 
