@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Simple Play Integrity Checker</string>
+  <string name="app_name_short">SPIC</string>
+  <!-- SafetyNet Strings -->
+  <string name="sn_result_title">SafetyNet 認証結果:</string>
+  <string name="sn_result_nonce">ノンス</string>
+  <string name="sn_result_timestamp">タイムスタンプ</string>
+  <string name="sn_result_evaluationType">評価タイプ</string>
+  <string name="sn_result_basicIntegrity">基本的な完全性</string>
+  <string name="sn_result_ctsProfileMatch">CTS プロファイルの一致</string>
+  <string name="sn_result_apkPackageName">APK パッケージ名</string>
+  <string name="sn_result_digest">APK ダイジェスト (SHA256)</string>
+  <string name="sn_result_certificateDigest">APK ダイジェスト証明書 (SHA256)</string>
+  <string name="sn_HardwareBacked">ハードウェア証明済み</string>
+  <string name="sn_Basic">Basic</string>
+  <string name="sn_passed">パス</string>
+  <string name="sn_failed">失敗</string>
+  <string name="sn_unevaluated">評価なし</string>
+  <string name="safetyNet_attestation_button">SafetyNet 認証をリクエスト</string>
+  <!-- PlayIntegrity Strings -->
+  <string name="pi_result_title">Play Integrity 認証結果:</string>
+  <string name="pi_result_requestDetails">リクエストの詳細</string>
+  <string name="pi_result_nonce">ノンス</string>
+  <string name="pi_result_requestPackageName">リクエストパッケージ名</string>
+  <string name="pi_result_timestamp">タイムスタンプ</string>
+  <string name="pi_result_appIntegrity">アプリの完全性</string>
+  <string name="pi_result_appRecognitionVerdict">アプリの完全性判定</string>
+  <string name="pi_result_apkPackageName">APK パッケージ名</string>
+  <string name="pi_result_apkCertificateDigestSha256">APK ダイジェスト証明書 (SHA256)</string>
+  <string name="pi_result_versionCode">バージョンコード</string>
+  <string name="pi_result_deviceIntegrity">デバイスの完全性</string>
+  <string name="pi_result_deviceRecognitionVerdict">デバイスの完全性判定</string>
+  <string name="pi_result_accountDetails">アカウントの詳細</string>
+  <string name="pi_result_appLicensingVerdict">アプリライセンスの完全性判定</string>
+  <string name="playIntegrity_button">Play Integrity 認証をリクエスト</string>
+  <string name="deviceRecognition_help_NO_INTEGRITY">デバイスの攻撃(API フッキングなど)やシステム侵害(root 化など)の兆候がある、または物理的なデバイスではない物(Google Play Integrity のチェックをパスしていないエミュレーターなど)</string>
+  <string name="deviceRecognition_help_MEETS_BASIC_INTEGRITY">デバイスが基本的なシステムの完全性のチェックにパスしています。Android の互換性要件を満たしていない可能性があり、Google Play サービスの実行が認定されていない可能性があります。(例: 非認識の環境で Android を実行、ブートローダーがアンロック、製造元によって非認定)</string>
+  <string name="deviceRecognition_help_MEETS_DEVICE_INTEGRITY">Android デバイスは Google Play サービスを搭載しており、システムの完全性のチェックをパスと Android の互換性要件を満たしています。</string>
+  <string name="deviceRecognition_help_MEETS_STRONG_INTEGRITY">Android デバイスは Google Play サービスを搭載しており、ブートの完全性をハードウェアで証明するなど、システムの完全性を強力に保証しています。システムの完全性のチェックをパスと Android の互換性要件を満たしています。</string>
+  <string name="deviceRecognition_help_MEETS_VIRTUAL_INTEGRITY">このアプリは、Google Play サービスを使用した Android エミュレーター上で動作しています。エミュレーターは、システムの完全性のチェックにパスをしており、Android のコアの互換性要件を満たしています。</string>
+  <!-- SafetyNet and PlayIntegrity Strings -->
+  <string name="result_rawJsonResult">JSON を表示</string>
+  <string name="result_exportJson">JSON をエクスポート</string>
+  <string name="result_loading">読み込み中</string>
+  <string name="dialog_title">認証結果の JSON</string>
+  <string name="result_UnknownError">不明なエラーが発生しました</string>
+  <string name="requestSettings_title">リクエストの設定</string>
+  <string name="requestSettings_nonceCreation">ノンスの作成</string>
+  <string name="requestSettings_checkVerdict">完全性判定の確認</string>
+  <string name="requestSettings_local">ローカル</string>
+  <string name="requestSettings_server">サーバー</string>
+  <string name="requestSettings_google">Google</string>
+  <string name="requestSettings_nonceCreation_helpText">ノンスをデバイスでローカル内に作成するか、セキュアなリモートサーバー上で作成するかを決定します。(ローカルで作成されたノンスはテスト用であり、本番での使用は推奨しません)ノンスを使用する事で、リプレイアタックを防ぐ事ができます。</string>
+  <string name="requestSettings_checkVerdict_helpText">完全性の判定をデバイスのローカル内でチェックをするか、完全なリモートサーバー上でチェックをするかを決定します。(ローカルでの判定はチェックを迂回する事が簡単になるため、テスト目的に限られます)</string>
+  <string name="result_verdictStrength">完全性の強度:</string>
+  <!-- Settings Strings -->
+  <string name="info_device">デバイス情報</string>
+  <string name="info_model">モデル</string>
+  <string name="info_androidVersion">Android バージョン</string>
+  <string name="info_securityPatch">セキュリティパッチ</string>
+  <string name="info_playServicesVersion">Play サービスバージョン</string>
+  <string name="settings_title">設定</string>
+  <string name="settings_theme">テーマ</string>
+  <string name="settings_theme_system">システム</string>
+  <string name="settings_theme_light">ライト</string>
+  <string name="settings_theme_dark">ダーク</string>
+  <string name="settings_url">サーバー URL</string>
+  <string name="settings_url_hint">カスタムサーバー URL</string>
+  <!-- About Strings -->
+  <string name="about_this_app">このアプリは、Google Play Integrity API と Safety Net Attestation API のオープンソース実装です。一意のノンス作成と両方の API から返される完全性のチェックは、デバイスのローカル上で実行かサーバー実装を使用してリモートサーバー上で実行する事ができます。</string>
+  <string name="about_api">API 情報</string>
+  <string name="about_api_playIntegrityButton">Play Integrity</string>
+  <string name="about_api_playIntegrityLink" translatable="false">https://developer.android.com/google/play/integrity</string>
+  <string name="about_api_safetyNetButton">SafetyNet</string>
+  <string name="about_api_safetyNetLink" translatable="false">https://developer.android.com/training/safetynet/attestation</string>
+  <string name="about_sourceCode">ソースコード</string>
+  <string name="about_sourceCode_appButton">Android アプリ</string>
+  <string name="about_sourceCode_appLink" translatable="false">https://github.com/herzhenr/spic-android</string>
+  <string name="about_sourceCode_serverButton">サーバーを確認</string>
+  <string name="about_sourceCode_serverLink" translatable="false">https://github.com/herzhenr/spic-server</string>
+  <string name="about_licenseAndPrivacy">ライセンスとプライバシーポリシー</string>
+  <string name="about_licenseButton">ライセンス</string>
+  <string name="about_privacyButton">プライバシー</string>
+  <string name="about_privacyLink" translatable="false">https://github.com/herzhenr/spic-android/blob/main/privacyPolicy.md</string>
+  <!-- BottomNavigationBar -->
+  <string name="bottomBar_playIntegrity">Play Integ.</string>
+  <string name="bottomBar_safetyNet">SafetyNet</string>
+  <string name="bottomBar_settings">設定</string>
+  <string name="bottomBar_about">アプリ情報</string>
+</resources>
