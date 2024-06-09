@@ -39,9 +39,13 @@
 
     <string name="pi_result_deviceIntegrity">Geräteintegrität </string>
     <string name="pi_result_deviceRecognitionVerdict">Gerät Erkennungs Urteil</string>
+    <string name="pi_result_recentDeviceActivity">Aktuelle Geräteaktivität</string>
 
     <string name="pi_result_accountDetails">Account Details</string>
     <string name="pi_result_appLicensingVerdict">App Lizensierungs Urteil</string>
+
+    <string name="pi_result_environmentDetails">Umgebungsdetails</string>
+    <string name="pi_result_playProtectVerdict">Play Protect Urteil</string>
 
     <string name="playIntegrity_button">Play Integrity Anfrage</string>
 
@@ -50,6 +54,17 @@
     <string name="deviceRecognition_help_MEETS_DEVICE_INTEGRITY">The Android device is powered by Google Play services. It passes system integrity checks and meets Android compatibility requirements.</string>
     <string name="deviceRecognition_help_MEETS_STRONG_INTEGRITY">The Android device is powered by Google Play services and has a strong guarantee of system integrity such as a hardware-backed proof of boot integrity. It passes system integrity checks and meets Android compatibility requirements.</string>
     <string name="deviceRecognition_help_MEETS_VIRTUAL_INTEGRITY">The app is running on an Android emulator powered by Google Play services. The emulator passes system integrity checks and meets core Android compatibility requirements.</string>
+
+    <string name="recentDeviceActivity_help_LEVEL_1">Niedrigste Stufe: Die App hat in der letzten Stunde 10 oder weniger Integritätstoken auf diesem Gerät angefordert.</string>
+    <string name="recentDeviceActivity_help_LEVEL_2">Die App hat in der letzten Stunde zwischen 11 und 25 Integritätstoken auf diesem Gerät angefordert.</string>
+    <string name="recentDeviceActivity_help_LEVEL_3">Die App hat in der letzten Stunde zwischen 26 und 50 Integritätstoken auf diesem Gerät angefordert.</string>
+    <string name="recentDeviceActivity_help_LEVEL_4">Höchste Stufe: Die App hat in der letzten Stunde mehr als 50 Integritätstoken auf diesem Gerät angefordert.</string>
+    <string name="recentDeviceActivity_help_UNEVALUATED">
+        Die aktuelle Geräteaktivität wurde nicht ausgewertet. Hier sind einige der verschiedenen Gründe, warum dies passieren könnte:\n\n
+        \u2022 Das Gerät ist nicht zuverlässig genug.\n
+        \u2022 Die auf dem Gerät installierte Version Ihrer App ist Google Play nicht bekannt.\n
+        \u2022 Das Gerät weist technische Probleme auf.
+    </string>
 
     <!-- SafetyNet and PlayIntegrity Strings -->
     <string name="result_rawJsonResult">Reines JSON</string>

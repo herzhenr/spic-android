@@ -29,9 +29,15 @@ class PlayIntegrityStatement : Statement {
      */
     @Key
     val accountDetails: AccountDetails? = null
+
+    /**
+     * Details about the environment
+     */
+    @Key
+    val environmentDetails: EnvironmentDetails? = null
 }
 
-class RequestDetails{
+class RequestDetails {
     /**
      * Request package name of the APK that submitted this request.
      */
@@ -54,7 +60,7 @@ class RequestDetails{
     val nonce: String? = null
 }
 
-class AppIntegrity{
+class AppIntegrity {
     /**
      * general app recognition verdict. If this evaluates to 'UNEVALUATED', no further infos are
      * provided in the response, so other fields are empty
@@ -83,19 +89,42 @@ class AppIntegrity{
     val versionCode: String? = null
 }
 
-class DeviceIntegrity{
+class DeviceIntegrity {
     /**
      * deviceRecognitionVerdict. Types of measurements that contributed to this response.
      */
     @Key
     val deviceRecognitionVerdict: ArrayList<String> = ArrayList()
+
+    /**
+     * Details about the recent device activity
+     */
+    @Key
+    val recentDeviceActivity: RecentDeviceActivity? = null
 }
 
-class AccountDetails{
+class RecentDeviceActivity {
+    /**
+     * deviceActivityLevel. Tells you how many times your app requested an integrity token
+     * on a specific device in the last hour.
+     */
+    @Key
+    val deviceActivityLevel: String? = null
+}
+
+class AccountDetails {
     /**
      * licensing of the app (only through google play distributed apps are licensed here)
      */
     @Key
     val appLicensingVerdict: String? = null
+}
 
+class EnvironmentDetails {
+    /**
+     * The environmentDetails field contains a single value, playProtectVerdict, that provides
+     * information about Google Play Protect on the device.
+     */
+    @Key
+    val playProtectVerdict: String? = null
 }

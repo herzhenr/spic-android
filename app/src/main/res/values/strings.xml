@@ -39,9 +39,13 @@
 
     <string name="pi_result_deviceIntegrity">Device Integrity</string>
     <string name="pi_result_deviceRecognitionVerdict">Device recognition verdict</string>
+    <string name="pi_result_recentDeviceActivity">Recent device activity</string>
 
     <string name="pi_result_accountDetails">Account Details</string>
     <string name="pi_result_appLicensingVerdict">App licensing verdict</string>
+
+    <string name="pi_result_environmentDetails">Environment Details</string>
+    <string name="pi_result_playProtectVerdict">Play Protect Verdict</string>
 
     <string name="playIntegrity_button">Make Play Integrity Request</string>
 
@@ -51,6 +55,16 @@
     <string name="deviceRecognition_help_MEETS_STRONG_INTEGRITY">The Android device is powered by Google Play services and has a strong guarantee of system integrity such as a hardware-backed proof of boot integrity. It passes system integrity checks and meets Android compatibility requirements.</string>
     <string name="deviceRecognition_help_MEETS_VIRTUAL_INTEGRITY">The app is running on an Android emulator powered by Google Play services. The emulator passes system integrity checks and meets core Android compatibility requirements.</string>
 
+    <string name="recentDeviceActivity_help_LEVEL_1">Lowest level: The app requested 10 or fewer integrity tokens on this device in the last hour.</string>
+    <string name="recentDeviceActivity_help_LEVEL_2">The app requested between 11 and 25 integrity tokens on this device in the last hour.</string>
+    <string name="recentDeviceActivity_help_LEVEL_3">The app requested between 26 and 50 integrity tokens on this device in the last hour.</string>
+    <string name="recentDeviceActivity_help_LEVEL_4">Highest level: The app requested more than 50 integrity tokens on this device in the last hour.</string>
+    <string name="recentDeviceActivity_help_UNEVALUATED">
+        Recent device activity was not evaluated. This could happen for several reasons, including the following:\n\n
+        \u2022 The device is not trustworthy enough.\n
+        \u2022 The version of your app installed on the device is unknown to Google Play.\n
+        \u2022 Technical issues on the device.
+    </string>
 
     <!-- SafetyNet and PlayIntegrity Strings -->
     <string name="result_rawJsonResult">Raw JSON</string>
