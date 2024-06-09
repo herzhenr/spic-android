@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Play Integrity Checker</string>
+    <string name="app_name_short">SPIC</string>
+
+    <!-- SafetyNet Strings -->
+    <string name="sn_result_title">Resultado do SafetyNet:</string>
+    <string name="sn_result_nonce">Nonce</string>
+    <string name="sn_result_timestamp">Data e hora</string>
+    <string name="sn_result_evaluationType">Tipo de avaliação</string>
+    <string name="sn_result_basicIntegrity">Integridade básica</string>
+    <string name="sn_result_ctsProfileMatch">Correspondência de perfil CTS</string>
+    <string name="sn_result_apkPackageName">Nome do pacote APK</string>
+    <string name="sn_result_digest">Resumo do APK (SHA256)</string>
+    <string name="sn_result_certificateDigest">Resumo do certificado APK (SHA256)</string>
+    <string name="sn_HardwareBacked">Suporte de hardware</string>
+    <string name="sn_Basic">Básico</string>
+    <string name="sn_passed">passou</string>
+    <string name="sn_failed">falhou</string>
+    <string name="sn_unevaluated">não avaliado</string>
+    <string name="safetyNet_attestation_button">Testar SafetyNet</string>
+
+    <!-- PlayIntegrity Strings -->
+    <string name="pi_result_title">Resultado do Play Integrity:</string>
+    <string name="pi_result_requestDetails">Solicitar detalhes</string>
+    <string name="pi_result_nonce">Nonce</string>
+    <string name="pi_result_requestPackageName">Solicitar nome do pacote</string>
+    <string name="pi_result_timestamp">Data e hora</string>
+    <string name="pi_result_appIntegrity">Integridade do app</string>
+    <string name="pi_result_appRecognitionVerdict">Veredicto de reconhecimento do app</string>
+    <string name="pi_result_apkPackageName">Nome do pacote APK</string>
+    <string name="pi_result_apkCertificateDigestSha256">Resumo do certificado APK (SHA256)</string>
+    <string name="pi_result_versionCode">Código da versão</string>
+    <string name="pi_result_deviceIntegrity">Integridade do dispositivo</string>
+    <string name="pi_result_deviceRecognitionVerdict">Veredicto de reconhecimento do dispositivo</string>
+    <string name="pi_result_accountDetails">Detalhes da conta</string>
+    <string name="pi_result_appLicensingVerdict">Veredicto de licenciamento do app</string>
+    <string name="playIntegrity_button">Testar Play Integrity</string>
+    <string name="deviceRecognition_help_NO_INTEGRITY">O dispositivo apresenta sinais de ataque (como interceptação de API) ou comprometimento do sistema (como root) ou não é um dispositivo físico (como um emulador que não passa nas verificações de integridade do Google Play).</string>
+    <string name="deviceRecognition_help_MEETS_BASIC_INTEGRITY">O dispositivo passa nas verificações básicas de integridade do sistema. Ele pode não atender aos requisitos de compatibilidade do Android e pode não ser aprovado para executar o Google Play Services (por exemplo, o dispositivo está executando uma versão não reconhecida do Android, pode ter um bootloader desbloqueado ou pode não ter sido certificado pelo fabricante).</string>
+    <string name="deviceRecognition_help_MEETS_DEVICE_INTEGRITY">O dispositivo Android é alimentado por Google Play Services. Ele passa nas verificações de integridade do sistema e atende aos requisitos de compatibilidade do Android.</string>
+    <string name="deviceRecognition_help_MEETS_STRONG_INTEGRITY">O dispositivo Android é alimentado pelo Google Play Services e tem uma forte garantia de integridade do sistema, como uma prova de integridade de inicialização apoiada por hardware. Ele passa nas verificações de integridade do sistema e atende aos requisitos de compatibilidade do Android.</string>
+    <string name="deviceRecognition_help_MEETS_VIRTUAL_INTEGRITY">O app está sendo executado em um emulador Android desenvolvido pelo Google Play Services. O emulador passa nas verificações de integridade do sistema e atende aos principais requisitos de compatibilidade do Android.</string>
+
+    <!-- SafetyNet and PlayIntegrity Strings -->
+    <string name="result_rawJsonResult">JSON bruto</string>
+    <string name="result_exportJson">Exportar JSON</string>
+    <string name="result_loading">carregando</string>
+    <string name="dialog_title">Resultado do JSON bruto</string>
+    <string name="result_UnknownError">ocorreu um erro desconhecido</string>
+    <string name="requestSettings_title">Configurações de solicitação</string>
+    <string name="requestSettings_nonceCreation">Criação nonce</string>
+    <string name="requestSettings_checkVerdict">Verificar veredicto</string>
+    <string name="requestSettings_local">local</string>
+    <string name="requestSettings_server">servidor</string>
+    <string name="requestSettings_google">google</string>
+    <string name="requestSettings_nonceCreation_helpText">Determina se o nonce é criado localmente no dispositivo ou no servidor remoto seguro. (Os nonce gerados localmente são apenas para fins de teste e não são recomendados para uso em produção). O uso de um nonce evita ataques de repetição.</string>
+    <string name="requestSettings_checkVerdict_helpText">Determina se o veredicto de integridade deve ser verificado localmente no dispositivo ou em um servidor remoto seguro. (Verificar o veredicto localmente é apenas para fins de teste, pois torna trivial ignorar a verificação).</string>
+    <string name="result_verdictStrength">Força do veredicto:</string>
+
+    <!-- Settings Strings -->
+    <string name="info_device">Informações do dispositivo</string>
+    <string name="info_model">Modelo</string>
+    <string name="info_androidVersion">Versão do Android</string>
+    <string name="info_securityPatch">Patch de segurança</string>
+    <string name="info_playServicesVersion">Versão do Google Play Services</string>
+    <string name="settings_title">Configurações</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">sistema</string>
+    <string name="settings_theme_light">claro</string>
+    <string name="settings_theme_dark">escuro</string>
+    <string name="settings_url">URL do servidor</string>
+    <string name="settings_url_hint">URL do servidor personalizado</string>
+
+    <!-- About Strings -->
+    <string name="about_this_app">Este app é uma implementação de código aberto da API Google Play Integrity, bem como da API Safety Net Attestation (informações da API, veja abaixo). A criação de nonce exclusivo, bem como as verificações do veredicto retornado por ambas as APIs, podem ser realizadas localmente no dispositivo ou em um servidor remoto usando a implementação do servidor.</string>
+    <string name="about_api">Informações da API</string>
+    <string name="about_api_playIntegrityButton">Play Integrity</string>
+    <string name="about_api_safetyNetButton">SafetyNet</string>
+    <string name="about_sourceCode">Código fonte</string>
+    <string name="about_sourceCode_appButton">App Android</string>
+    <string name="about_sourceCode_serverButton">Verificar servidor</string>
+    <string name="about_licenseAndPrivacy">Licença e política de privacidade</string>
+    <string name="about_licenseButton">Licenças</string>
+    <string name="about_privacyButton">Privacidade</string>
+
+    <!-- BottomNavigationBar -->
+    <string name="bottomBar_playIntegrity">Play Integ.</string>
+    <string name="bottomBar_safetyNet">SafetyNet</string>
+    <string name="bottomBar_settings">Configurações</string>
+    <string name="bottomBar_about">Sobre</string>
+</resources>
